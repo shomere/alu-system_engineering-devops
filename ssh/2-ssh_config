@@ -1,0 +1,6 @@
+#!usr/bin/env bash
+6538-web-01
+	HostName 6538-web-01
+	User ubuntu 
+	IdentityFile ~/.ssh/school
+	PasswordAuthentification:no
