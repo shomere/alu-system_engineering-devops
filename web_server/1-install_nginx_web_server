@@ -1,25 +1,7 @@
 #!/usr/bin/env bash
-# This script installs and configures Nginx to serve a custom page on Ubuntu.
-
-# Update the package list
-apt-get update -y
-
-# Install Nginx
-apt-get install -y nginx
-
-# Ensure Nginx listens on port 80
-sed -i 's/listen 80 default_server;/listen 80;/' /etc/nginx/sites-available/default
-
-# Restart Nginx to apply changes
-service nginx restart
-
-# Create the HTML file that Nginx serves at the root
-echo "Holberton School" | tee /var/www/html/index.html > /dev/null
-
-# Verify that Nginx is serving the correct content
-if curl -s localhost | grep -q "Holberton School"; then
-    echo "Nginx is running and serving the expected content."
-else
-    echo "Error: Nginx is not serving the expected content!" >&2
-    exit 1
-fi
+# How to install in nginx and configure it 
+sudo apt update 
+sudo apt install nginx -y
+sudo touch /var/www/html/index.html
+echo "Holberton School" | sudo tee /var/www/html/index.html
+sudo service nginx restart
