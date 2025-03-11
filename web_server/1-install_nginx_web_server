@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# This script installs and configures Nginx on an Ubuntu server.
+
+# Update the package list
+apt-get update -y
+
+# Install Nginx
+apt-get install -y nginx
+
+# Create a custom HTML file for the root page
+echo "Holberton School for the win!" | tee /var/www/html/index.html > /dev/null
+
+# Restart Nginx without using systemctl
+service nginx restart
+
+# Verify if Nginx is serving the correct page
+if curl -s localhost | grep -q "Holberton School"; then
+    echo "Nginx is running and serving the expected content."
+else
+    echo "Error: Nginx is not serving the expected content!" >&2
+    exit 1
+fi
